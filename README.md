@@ -3,8 +3,6 @@ Trivia form with multiple choice or true/false options
 
 Basic Quiz (Timed Form)
 
-![Basic](Images/1-basic.jpg)
-
 **[Click Here to Watch the Demo](https://youtu.be/fBIj8YsA9dk)**.
 
 * Create a trivia form with multiple choice or true/false options (your choice).
