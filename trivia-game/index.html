@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title><!DOCTYPE html>
+<html>
+<head>
+	<title>Basic Quiz (Timed Form)</title>
+</head>
+<body>
+<!-- Option One: Basic Quiz (Timed Form)
+![Basic](Images/1-basic.jpg)
+**[Click Here to Watch the Demo](https://youtu.be/fBIj8YsA9dk)**.
+    * You'll create a trivia form with multiple choice or true/false options (your choice).    
+    * The player will have a limited amount of time to finish the quiz.     
+    * The game ends when the time runs out. The page will reveal the number of questions 
+    that players answer correctly and incorrectly.
+        * Don't let the player pick more than one answer per question.
+        * Don't forget to include a countdown timer. -->
+
+        <form>
+            <p>Question 1</p>
+            <input type="radio" name="gender" value="male," id="m"> <label for="m">Male</label><br>
+            <input type="radio" name="gender" value="female"> Female<br>
+            <input type="radio" name="gender" value="other"> Other<br>  
+        
+            <p>Question 2</p>
+            <input type="radio" name="age" value="0 - 30 years old"> 0 - 30<br>
+            <input type="radio" name="age" value="60"> 31 - 60<br>
+            <input type="radio" name="age" value="100"> 61 - 100<br>  
+        
+            <input type="submit" value="Submit">
+        </form>
+        
+        <p id="content">
+            
+        </p>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script type="text/javascript">
+            $("input[type='submit']").on('click', function(){
+                var g = $("input[name='gender']:checked").val();
+                var a = $("input[name='age']:checked").val();
+        
+                $('#content').text(g + " " + a);
+        
+                event.preventDefault(); //prevent the page from refreshing
+            });
+        
+            
+        
+        </script>
+        </body>
+        </html>
