@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title><!DOCTYPE html>
-<html>
-<head>
-	<title>Basic Quiz (Timed Form)</title>
-</head>
-<body>
+        <title>Basic Quiz (timed form)</title>
+        <!-- meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <!-- Link added to a css custom file -->
+		<link rel="stylesheet" href="assets/css/style.css">
+    </head>
+    <body>
+       
 <!-- Option One: Basic Quiz (Timed Form)
 ![Basic](Images/1-basic.jpg)
 **[Click Here to Watch the Demo](https://youtu.be/fBIj8YsA9dk)**.
@@ -16,11 +20,13 @@
     that players answer correctly and incorrectly.
         * Don't let the player pick more than one answer per question.
         * Don't forget to include a countdown timer. -->
-        <h2> Hey! Take this fun quiz and test your knowledge over different sports!</h2>
-        <h3>You have less than 30 seconds... Go!</h3>
 
+         <!-- Body frame / content -->
+        <h2> Hey! Take this fun quiz and test your knowledge over different sports!</h2>
+        <h3>You have less than 2 minutes... Go!</h3>
+        <h2 id="timer"></h2>
         <form>
-            <p><strong>Which NBA Team Has Won The Most Championships?</strong></p>
+            <p><strong>Which NBA team has won the most championships?</strong></p>
             <input type="radio" name="bTeam" value="Los Angeles Lakers" id="lakers"> <label for="lakers">Los Angeles Lakers</label><br>
             <input type="radio" name="bTeam" value="Golden State Warriors" id="warriors"> <label for="warriors">Golden State Warriors</label><br>
             <input type="radio" name="bTeam" value="Boston Celtics" id="celtics"> <label for="celtics">Boston Celtics</label><br>
@@ -34,10 +40,10 @@
             <input type="radio" name="footTeam" value="Pittsburgh Steelers" id="steelers"> <label for="steelers">Pittsburgh Steelers</label><br>
             <!-- Packers with 13 wins (9 NFL championships pre-merger, four (4) Super Bowl championships) -->
 
-            <p><strong>Which MLB team sas won the most World Series titles?</strong></p>
+            <p><strong>Which MLB team has won the most World Series titles?</strong></p>
             <input type="radio" name="baseTeam" value="New York Yankes" id="yankes"> <label for="yankes">New York Yankes</label><br>
             <input type="radio" name="baseTeam" value="St. Louis Cardinals" id="cardinals"> <label for="cardinals">St. Louis Cardinals</label><br>
-            <input type="radio" name="baseTeam" value="Boston Red Sox" id="Redsox"> <label for="redsox">Boston Red Sox</label><br>
+            <input type="radio" name="baseTeam" value="Boston Red Sox" id="redsox"> <label for="redsox">Boston Red Sox</label><br>
             <input type="radio" name="baseTeam" value="San Francisco Giants" id="giants"> <label for="giants">San Francisco Giants</label><br>
             <!-- NY Yankes with 27 wins -->
 
@@ -55,14 +61,14 @@
             <input type="radio" name="tennisp" value="Maria Bueno" id="bueno"> <label for="bueno">Maria Bueno</label><br>
             <!-- Serena Williams has won 24 Major singles Grand Slam titles -->
 
-            <p><strong>Who is the athlete with the most gold Medals Won at a Single Olympic Games?</strong></p>
-            <input type="radio" name="athlete" value="Michael Phelps" id="phelps"> <label for="phelps">Michale Phelps</label><br>
+            <p><strong>Who is the athlete with the most gold Medals won at a single Olympic Games?</strong></p>
+            <input type="radio" name="athlete" value="Michael Phelps" id="phelps"> <label for="phelps">Michael Phelps</label><br>
             <input type="radio" name="athlete" value="Mark Spitz" id="spitz"> <label for="spitz">Mark Spitz</label><br>
             <input type="radio" name="athlete" value="Alexander Dityatin" id="dityatin"> <label for="dityatin">Alexanders Dityatin</label><br>
             <input type="radio" name="athlete" value="Carl Lewis" id="lewis"> <label for="lewis">Carl Lewis</label><br>
             <!-- Michael Phelps with 8 gold medals in 2008-->
 
-            <p><strong>Who is the surfer with most world titles?</strong></p>
+            <p><strong>Who is the surfer with most world titles in history?</strong></p>
             <input type="radio" name="surfer" value="Tom Curren" id="curren"> <label for="curren">Tom Curren</label><br>
             <input type="radio" name="surfer" value="Mark Richards" id="richards"> <label for="richards">Mark Richards</label><br>
             <input type="radio" name="surfer" value="Kelly Slater" id="slater"> <label for="slater">Kelly Slater</label><br>
@@ -70,28 +76,42 @@
             <!-- Kelly slater has won 11 world titles-->
 
             <p><strong>Which women's national soccer team has won the most FIFA's World Cups?</strong></p>
-            <input type="radio" name="bTeam" value="Brazil" id="brazil"> <label for="brazil">Brazil</label><br>
-            <input type="radio" name="bTeam" value="Germany" id="germany"> <label for="germany">Germany</label><br>
-            <input type="radio" name="bTeam" value="Argentina" id="argentina"> <label for="argentina">Argentina</label><br>
-            <input type="radio" name="bTeam" value="United States" id="usa"> <label for="usa">United States</label><br>
+            <input type="radio" name="sTeam" value="Brazil" id="brazil"> <label for="brazil">Brazil</label><br>
+            <input type="radio" name="sTeam" value="Germany" id="germany"> <label for="germany">Germany</label><br>
+            <input type="radio" name="sTeam" value="Argentina" id="argentina"> <label for="argentina">Argentina</label><br>
+            <input type="radio" name="sTeam" value="United States" id="usa"> <label for="usa">United States</label><br>
             <!-- United States has won 4 world titles-->
             <br>
             <input type="submit" value="Submit">
+            <!-- the right answers -->
+            <h3 id="answers"></h3><br>
+            <br>
         </form>
-        
-        <p id="content">
-            
-        </p>
-        
+
+         <!-- Added link to the jQuery Library -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script type="text/javascript">
+        //timer
+            var counter = 120;
+	        $('#timer').text(counter);
+	        function decreaseCounter(){
+		    counter--; //counter-=1; another way //counter = counter-1;
+            $('#timer').text(counter);
+
+                //PROBLEMS W/ MY CODE
+
+            setTimeout(decreaseCounter, 120000);//DOES NOT STOP THE TIMER AFTER 2 MINUTES/120 SECONDS********************
+              // clearInterval(timeOut); STOPS THE TIMER AFTER THE FIRST COUNT DOWN SECOND
+	        }
+            var timeOut = setInterval(decreaseCounter, 1*1000);
+	    
             $("input[type='submit']").on('click', function(){
                 // var g = $("input[name='...']:checked").val();
                 // var a = $("input[name='...']:checked").val();
         
-                $('#content').text(g + " " + a);
+                $('#answers').text("The correct answers: Celtics; Packers; Yankes; Sam Snead; Serena Williams; Michael Phelps; Kelly Slater; USA.");
         
-                event.preventDefault(); //prevent the page from refreshing
+                event.preventDefault(); //prevent the page from refreshing **********NOT WORKING**********
             });
         
             
