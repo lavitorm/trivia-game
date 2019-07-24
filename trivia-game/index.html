@@ -6,11 +6,17 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <!-- Link added to a css custom file -->
-		<link rel="stylesheet" href="assets/css/style.css">
+        <!-- To keep things as simple as possible, I decided to keep "style" and "script" in the same file with the html -->
+        <style>
+        #counter {
+        color: red;
+        }
+        #answers {
+        color: red;
+        }
+        </style>
     </head>
     <body>
-       
 <!-- Option One: Basic Quiz (Timed Form)
 ![Basic](Images/1-basic.jpg)
 **[Click Here to Watch the Demo](https://youtu.be/fBIj8YsA9dk)**.
@@ -22,15 +28,17 @@
         * Don't forget to include a countdown timer. -->
 
          <!-- Body frame / content -->
-        <h2> Hey! Take this fun quiz and test your knowledge over different sports!</h2>
-        <h3>You have less than 2 minutes... Go!</h3>
-        <h2 id="timer"></h2>
+        <h2>Hey! Take this fun quiz and test your knowledge over different sports!</h2>
+        <h3>Check the results at the end!</h3>
+        <h3>You have less than 2 minutes... Good luck!</h3>
+        <h2 id="counter"></h2>
         <form>
             <p><strong>Which NBA team has won the most championships?</strong></p>
             <input type="radio" name="bTeam" value="Los Angeles Lakers" id="lakers"> <label for="lakers">Los Angeles Lakers</label><br>
             <input type="radio" name="bTeam" value="Golden State Warriors" id="warriors"> <label for="warriors">Golden State Warriors</label><br>
             <input type="radio" name="bTeam" value="Boston Celtics" id="celtics"> <label for="celtics">Boston Celtics</label><br>
             <input type="radio" name="bTeam" value="Chicago Bulls" id="bulls"> <label for="bulls">Chicago Bulls</label><br>
+            <p id="NBA"></p><br>
             <!-- Celtics with 17 wins -->
 
             <p><strong>Which one of the following American football team has the most championships and Super Bowl wins in the history?</strong></p>
@@ -38,13 +46,15 @@
             <input type="radio" name="footTeam" value="Green Bay Packers" id="packers"> <label for="packers">Green Bay Packers</label><br>
             <input type="radio" name="footTeam" value="New England Patriots" id="patriots"> <label for="patriots">New England Patriots</label><br>
             <input type="radio" name="footTeam" value="Pittsburgh Steelers" id="steelers"> <label for="steelers">Pittsburgh Steelers</label><br>
-            <!-- Packers with 13 wins (9 NFL championships pre-merger, four (4) Super Bowl championships) -->
+            <p id="NFL"></p><br>
+            <!-- Green Bay Packers, with 13 wins: 9 NFL championships pre-merger and 4 Super Bowl championships. -->
 
             <p><strong>Which MLB team has won the most World Series titles?</strong></p>
             <input type="radio" name="baseTeam" value="New York Yankes" id="yankes"> <label for="yankes">New York Yankes</label><br>
             <input type="radio" name="baseTeam" value="St. Louis Cardinals" id="cardinals"> <label for="cardinals">St. Louis Cardinals</label><br>
             <input type="radio" name="baseTeam" value="Boston Red Sox" id="redsox"> <label for="redsox">Boston Red Sox</label><br>
             <input type="radio" name="baseTeam" value="San Francisco Giants" id="giants"> <label for="giants">San Francisco Giants</label><br>
+            <p id="MLB"></p><br>
             <!-- NY Yankes with 27 wins -->
 
             <p><strong>Who is the golf player with most PGA Tour wins?</strong></p>
@@ -52,6 +62,7 @@
             <input type="radio" name="golfer" value="Jack Nicklaus" id="nicklaus"> <label for="nicklaus">Jack Nicklaus</label><br>
             <input type="radio" name="golfer" value="Ben Hogan" id="hogan"> <label for="hogan">Ben Hogan</label><br>
             <input type="radio" name="golfer" value="Sam Snead" id="snead"> <label for="snead">Sam Snead</label><br>
+            <p id="PGA"></p><br>
             <!-- Sam Snead with 82 wins, followed by Tiger Woods with 81 wins) -->
 
             <p><strong> Which female tennis player won the most Grand Slam singles titles?</strong></p>
@@ -59,6 +70,7 @@
             <input type="radio" name="tennisp" value="Steffi Graf" id="steffi"> <label for="steffi">Steffi Graf</label><br>
             <input type="radio" name="tennisp" value="Martina Navratilova" id="navratilova"> <label for="navratilova">Martina Navratilova</label><br>
             <input type="radio" name="tennisp" value="Maria Bueno" id="bueno"> <label for="bueno">Maria Bueno</label><br>
+            <p id="tennis"></p><br>
             <!-- Serena Williams has won 24 Major singles Grand Slam titles -->
 
             <p><strong>Who is the athlete with the most gold Medals won at a single Olympic Games?</strong></p>
@@ -66,6 +78,7 @@
             <input type="radio" name="athlete" value="Mark Spitz" id="spitz"> <label for="spitz">Mark Spitz</label><br>
             <input type="radio" name="athlete" value="Alexander Dityatin" id="dityatin"> <label for="dityatin">Alexanders Dityatin</label><br>
             <input type="radio" name="athlete" value="Carl Lewis" id="lewis"> <label for="lewis">Carl Lewis</label><br>
+            <p id="athlete"></p><br>
             <!-- Michael Phelps with 8 gold medals in 2008-->
 
             <p><strong>Who is the surfer with most world titles in history?</strong></p>
@@ -73,6 +86,7 @@
             <input type="radio" name="surfer" value="Mark Richards" id="richards"> <label for="richards">Mark Richards</label><br>
             <input type="radio" name="surfer" value="Kelly Slater" id="slater"> <label for="slater">Kelly Slater</label><br>
             <input type="radio" name="surfer" value="Mick Fanning" id="fanning"> <label for="fanning">Mick Fanning</label><br>
+            <p id="surfer"></p><br>
             <!-- Kelly slater has won 11 world titles-->
 
             <p><strong>Which women's national soccer team has won the most FIFA's World Cups?</strong></p>
@@ -80,42 +94,92 @@
             <input type="radio" name="sTeam" value="Germany" id="germany"> <label for="germany">Germany</label><br>
             <input type="radio" name="sTeam" value="Argentina" id="argentina"> <label for="argentina">Argentina</label><br>
             <input type="radio" name="sTeam" value="United States" id="usa"> <label for="usa">United States</label><br>
+            <p id="soccer"></p><br>
             <!-- United States has won 4 world titles-->
             <br>
             <input type="submit" value="Submit">
             <!-- the right answers -->
-            <h3 id="answers"></h3><br>
+            <h3 id="answers">Answers:</h3>
+            <p id="1"></p>
+            <p id="2"></p>
+            <p id="3"></p>
+            <p id="4"></p>
+            <p id="5"></p>
+            <p id="6"></p>
+            <p id="7"></p>
+            <p id="8"></p>
             <br>
         </form>
 
          <!-- Added link to the jQuery Library -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script type="text/javascript">
-        //timer
+        //timer (2 minutes)
             var counter = 120;
-	        $('#timer').text(counter);
-	        function decreaseCounter(){
-		    counter--; //counter-=1; another way //counter = counter-1;
-            $('#timer').text(counter);
+            $('#counter').text(counter);
+            var timer = setInterval(goDown, 1*1000);
+	        function goDown(){
+		    counter--;
+            $('#counter').text(counter);
 
-                //PROBLEMS W/ MY CODE
-
-            setTimeout(decreaseCounter, 120000);//DOES NOT STOP THE TIMER AFTER 2 MINUTES/120 SECONDS********************
-              // clearInterval(timeOut); STOPS THE TIMER AFTER THE FIRST COUNT DOWN SECOND
-	        }
-            var timeOut = setInterval(decreaseCounter, 1*1000);
-	    
+		if (counter == 0){
+			$("input[type='submit']").attr('disabled', true);
+			clearInterval(timer);
+			$('#answers').text('Time is up! Check your answers!')
+		    }
+	    }   
             $("input[type='submit']").on('click', function(){
-                // var g = $("input[name='...']:checked").val();
-                // var a = $("input[name='...']:checked").val();
-        
-                $('#answers').text("The correct answers: Celtics; Packers; Yankes; Sam Snead; Serena Williams; Michael Phelps; Kelly Slater; USA.");
-        
-                event.preventDefault(); //prevent the page from refreshing **********NOT WORKING**********
-            });
-        
-            
-        
+            var ans_bTeam = $("input[name='bTeam']:checked").val();
+            var ans_footTeam = $("input[name='footTeam']:checked").val();
+            var ans_baseTeam = $("input[name='baseTeam']:checked").val();
+            var ans_golfer = $("input[name='golfer']:checked").val();
+            var ans_tennisp = $("input[name='tennisp']:checked").val();
+            var ans_surfer = $("input[name='surfer']:checked").val();
+            var ans_atlete = $("input[name='athlete']:checked").val();
+            var ans_sTeam = $("input[name='sTeam']:checked").val();
+		if (ans_bTeam == 'Boston Celtics'){
+			$('#1').text('1. Correct answer! With 17 wins, Boston Celtics is NBA team withthe most championships. ');
+		}else{
+			$('#1').text('1. The right answer is Boston Celtics, with 17 wins in the NBA.')
+        }
+        if (ans_footTeam == 'Green Bay Packers'){
+			$('#2').text('2. Correct answer! With 13 wins (9 NFL championships pre-merger and 4 Super Bowl championships), Green Bay Packer is the NFL team with the most championships. ');
+		}else{
+			$('#2').text('2. The right answer is Green Bay Packers, with 13 wins: 9 NFL championships pre-merger and 4 Super Bowl championships.')
+        }
+        if (ans_baseTeam == 'New York Yankes'){
+			$('#3').text('3. Correct answer! With 27 wins, New York Yankes is the MBL team with the most World Series Titles. ');
+		}else{
+			$('#3').text('3. The right answer is New York Yankes, with 27 World Series Titles.')
+        }
+        if (ans_golfer == 'Sam Snead'){
+			$('#4').text('4. Correct answer! With 82 wins, Sam Snead is the golf player with most PGA Tour wins, followed closely by Tiger Woods with 81. ');
+		}else{
+			$('#4').text('4. The right answer is Sam Snead. With 82 wins, he is the golf player with most PGA Tour wins, followed by Tiger Woods with 81.')
+        }
+        if (ans_tennisp == 'Serena Williams'){
+			$('#5').text('5. Correct answer! Serena Williams has won 24 Major singles Grand Slam titles. ');
+		}else{
+			$('#5').text('5. The right answer is Serena Williams. She has won 24 Major singles Grand Slam titles.')
+        }
+        if (ans_surfer == 'Kelly Slater'){
+			$('#6').text('6. Correct answer! With 11 wins, Kelly Slater is the surfer with most world titles in history. ');
+		}else{
+			$('#6').text('6. The right answer is Kelly Slater. He has won 11 World titles and is the most successful pro surfer of all times.')
+        }
+        if (ans_athlete== 'Michael Phelps'){
+			$('#7').text('7. Correct answer! With 8 gold medals in Beijing in 2008, Michael Phelps is the athlete with the most gold Medals won at a single Olympic Games. ');
+		}else{
+			$('#7').text('7. The right answer is Michael Phelps. With 8 gold medals in Beijing in 2008, he is the athlete with the most gold Medals won at a single Olympic Games. ');
+        }
+        if (ans_sTeam == 'United States'){
+			$('#8').text('8. Correct answer! USA with 4 FIFA World Cup wins.');
+		}else{
+			$('#8').text('8. The right answer is USA with 4 FIFA World Cup wins.')
+        }
+        //PROBLEM:
+		event.preventDefault(); //prevent the page from refreshing ***WHY IS IT NOT WORKING??? :(
+	    });
         </script>
-        </body>
-        </html>
+    </body>
+</html>
