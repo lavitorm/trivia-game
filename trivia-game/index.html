@@ -114,72 +114,79 @@
          <!-- Added link to the jQuery Library -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script type="text/javascript">
-        //timer (2 minutes)
+            //timer (2 minutes)
             var counter = 120;
             $('#counter').text(counter);
-            var timer = setInterval(goDown, 1*1000);
-	        function goDown(){
-		    counter--;
-            $('#counter').text(counter);
+            var timer = setInterval(goDown, 1 * 1000);
+            function goDown() {
+                counter--;
+                $('#counter').text(counter);
 
-		if (counter == 0){
-			$("input[type='submit']").attr('disabled', true);
-			clearInterval(timer);
-			$('#answers').text('Time is up! Check your answers!')
-		    }
-	    }   
+                if (counter == 0) {
+                    $("input[type='submit']").attr('disabled', true);
+                    clearInterval(timer);
+                    $('#answers').text('Time is up! Check your answers!')
+                    asdf()
+                    // event.preventDefault();
+                }
+            }
             $("input[type='submit']").on('click', function(){
-            var ans_bTeam = $("input[name='bTeam']:checked").val();
-            var ans_footTeam = $("input[name='footTeam']:checked").val();
-            var ans_baseTeam = $("input[name='baseTeam']:checked").val();
-            var ans_golfer = $("input[name='golfer']:checked").val();
-            var ans_tennisp = $("input[name='tennisp']:checked").val();
-            var ans_surfer = $("input[name='surfer']:checked").val();
-            var ans_atlete = $("input[name='athlete']:checked").val();
-            var ans_sTeam = $("input[name='sTeam']:checked").val();
-		if (ans_bTeam == 'Boston Celtics'){
-			$('#1').text('1. Correct answer! With 17 wins, Boston Celtics is NBA team withthe most championships. ');
-		}else{
-			$('#1').text('1. The right answer is Boston Celtics, with 17 wins in the NBA.')
-        }
-        if (ans_footTeam == 'Green Bay Packers'){
-			$('#2').text('2. Correct answer! With 13 wins (9 NFL championships pre-merger and 4 Super Bowl championships), Green Bay Packer is the NFL team with the most championships. ');
-		}else{
-			$('#2').text('2. The right answer is Green Bay Packers, with 13 wins: 9 NFL championships pre-merger and 4 Super Bowl championships.')
-        }
-        if (ans_baseTeam == 'New York Yankes'){
-			$('#3').text('3. Correct answer! With 27 wins, New York Yankes is the MBL team with the most World Series Titles. ');
-		}else{
-			$('#3').text('3. The right answer is New York Yankes, with 27 World Series Titles.')
-        }
-        if (ans_golfer == 'Sam Snead'){
-			$('#4').text('4. Correct answer! With 82 wins, Sam Snead is the golf player with most PGA Tour wins, followed closely by Tiger Woods with 81. ');
-		}else{
-			$('#4').text('4. The right answer is Sam Snead. With 82 wins, he is the golf player with most PGA Tour wins, followed by Tiger Woods with 81.')
-        }
-        if (ans_tennisp == 'Serena Williams'){
-			$('#5').text('5. Correct answer! Serena Williams has won 24 Major singles Grand Slam titles. ');
-		}else{
-			$('#5').text('5. The right answer is Serena Williams. She has won 24 Major singles Grand Slam titles.')
-        }
-        if (ans_surfer == 'Kelly Slater'){
-			$('#6').text('6. Correct answer! With 11 wins, Kelly Slater is the surfer with most world titles in history. ');
-		}else{
-			$('#6').text('6. The right answer is Kelly Slater. He has won 11 World titles and is the most successful pro surfer of all times.')
-        }
-        if (ans_athlete== 'Michael Phelps'){
-			$('#7').text('7. Correct answer! With 8 gold medals in Beijing in 2008, Michael Phelps is the athlete with the most gold Medals won at a single Olympic Games. ');
-		}else{
-			$('#7').text('7. The right answer is Michael Phelps. With 8 gold medals in Beijing in 2008, he is the athlete with the most gold Medals won at a single Olympic Games. ');
-        }
-        if (ans_sTeam == 'United States'){
-			$('#8').text('8. Correct answer! USA with 4 FIFA World Cup wins.');
-		}else{
-			$('#8').text('8. The right answer is USA with 4 FIFA World Cup wins.')
-        }
-        //PROBLEM:
-		event.preventDefault(); //prevent the page from refreshing ***WHY IS IT NOT WORKING??? :(
-	    });
+                event.preventDefault();
+                getAnswers()
+            })
+            
+            function getAnswers() {
+                var ans_bTeam = $("input[name='bTeam']:checked").val();
+                var ans_footTeam = $("input[name='footTeam']:checked").val();
+                var ans_baseTeam = $("input[name='baseTeam']:checked").val();
+                var ans_golfer = $("input[name='golfer']:checked").val();
+                var ans_tennisp = $("input[name='tennisp']:checked").val();
+                var ans_surfer = $("input[name='surfer']:checked").val();
+                var ans_athlete = $("input[name='athlete']:checked").val();
+                var ans_sTeam = $("input[name='sTeam']:checked").val();
+                if (ans_bTeam == 'Boston Celtics') {
+                    $('#1').text('1. Correct answer! With 17 wins, Boston Celtics is NBA team withthe most championships. ');
+                } else {
+                    $('#1').text('1. The right answer is Boston Celtics, with 17 wins in the NBA.')
+                }
+                if (ans_footTeam == 'Green Bay Packers') {
+                    $('#2').text('2. Correct answer! With 13 wins (9 NFL championships pre-merger and 4 Super Bowl championships), Green Bay Packer is the NFL team with the most championships. ');
+                } else {
+                    $('#2').text('2. The right answer is Green Bay Packers, with 13 wins: 9 NFL championships pre-merger and 4 Super Bowl championships.')
+                }
+                if (ans_baseTeam == 'New York Yankes') {
+                    $('#3').text('3. Correct answer! With 27 wins, New York Yankes is the MBL team with the most World Series Titles. ');
+                } else {
+                    $('#3').text('3. The right answer is New York Yankes, with 27 World Series Titles.')
+                }
+                if (ans_golfer == 'Sam Snead') {
+                    $('#4').text('4. Correct answer! With 82 wins, Sam Snead is the golf player with most PGA Tour wins, followed closely by Tiger Woods with 81. ');
+                } else {
+                    $('#4').text('4. The right answer is Sam Snead. With 82 wins, he is the golf player with most PGA Tour wins, followed by Tiger Woods with 81.')
+                }
+                if (ans_tennisp == 'Serena Williams') {
+                    $('#5').text('5. Correct answer! Serena Williams has won 24 Major singles Grand Slam titles. ');
+                } else {
+                    $('#5').text('5. The right answer is Serena Williams. She has won 24 Major singles Grand Slam titles.')
+                }
+                if (ans_surfer == 'Kelly Slater') {
+                    $('#6').text('6. Correct answer! With 11 wins, Kelly Slater is the surfer with most world titles in history. ');
+                } else {
+                    $('#6').text('6. The right answer is Kelly Slater. He has won 11 World titles and is the most successful pro surfer of all times.')
+                }
+                if (ans_athlete == 'Michael Phelps') {
+                    $('#7').text('7. Correct answer! With 8 gold medals in Beijing in 2008, Michael Phelps is the athlete with the most gold Medals won at a single Olympic Games. ');
+                } else {
+                    $('#7').text('7. The right answer is Michael Phelps. With 8 gold medals in Beijing in 2008, he is the athlete with the most gold Medals won at a single Olympic Games. ');
+                }
+                if (ans_sTeam == 'United States') {
+                    $('#8').text('8. Correct answer! USA with 4 FIFA World Cup wins.');
+                } else {
+                    $('#8').text('8. The right answer is USA with 4 FIFA World Cup wins.')
+                }
+                //PROBLEM:
+                //prevent the page from refreshing ***WHY IS IT NOT WORKING??? :(
+            }
         </script>
     </body>
 </html>
